@@ -1,0 +1,38 @@
+/************
+Time O(n)
+Space O(n)
+Leetcode yes
+Problem no
+
+At every index , the maximum water that we can store is bounded by the taller buildings on its left and right. And among 
+maximum building on its left and maximum building on its right, we would be able to store to water only till the minimum
+height building among these 2 buildings. Now we have the maximum level till which we can fill water at a particular index.
+We also have to subtract the building's height from this the maximum level that we obtained to get the final result at that 
+index. In the end we simply take a sum of all values that we obtained at each index.
+*************/
+class Solution {
+    public int trap(int[] height) {
+        if(height==null || height.length==0)
+            return 0;
+        int[] left = new int[height.length];
+        int[] right = new int[height.length];
+        int[] result = new int[height.length];
+        int max = Integer.MIN_VALUE;
+
+        left[0] = height[0];
+        for(int i =1; i< height.length;i++)
+            left[i] = Math.max(height[i], left[i-1]);
+
+        max = Integer.MIN_VALUE;
+
+        right[height.length-1] = height[height.length-1];
+        for(int i = height.length-2; i >=0; i--)
+            right[i] = Math.max(height[i], right[i+1]);
+
+        int sum =0;
+        for(int i=0;i<height.length;i++)
+            sum += Math.min(left[i] ,right[i]) - height[i];
+
+        return sum;
+    }
+}
