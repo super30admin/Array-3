@@ -1,0 +1,12 @@
+class Solution {
+    public int hIndex(int[] citations) {
+        Arrays.sort(citations);
+        int h=0;
+        int index = citations.length-1;
+        while(index >=0 && h < citations[index--])
+            h++;
+        return h;
+
+        
+    }
+}
