@@ -11,6 +11,8 @@ Example:
 
 Input: [0,1,0,2,1,0,1,3,2,1,2,1]
 Output: 6
+Time Complexity: O(n)
+Space Complexity:O(1)
 
 ## Problem2 H-Index (https://leetcode.com/problems/h-index/)
 
@@ -27,7 +29,8 @@ Explanation: [3,0,6,1,5] means the researcher has 5 papers in total and each of 
              Since the researcher has 3 papers with at least 3 citations each and the remaining 
              two with no more than 3 citations each, her h-index is 3.
 Note: If there are several possible values for h, the maximum one is taken as the h-index.
-
+Time Complexity: O(n)
+Space Complexity:O(n+1)=>O(n)
 
 
 ## Problem3  Rotate Array by K Places(https://leetcode.com/problems/rotate-array/)
@@ -50,6 +53,7 @@ Explanation:
 rotate 1 steps to the right: [99,-1,-100,3]
 rotate 2 steps to the right: [3,99,-1,-100]
 Note:
-
+Time Complexity: O(n+k+n-k)=O(2n)=>O(n)
+Space Complexity:O(1)
 Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
 Could you do it in-place with O(1) extra space?
