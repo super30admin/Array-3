@@ -1,5 +1,5 @@
 //Time Complexity:O(n)
-//Space Complexity:O(n)
+//Space Complexity:O(1)
 //Approach- FIrst step is to reverse the entire array. Then the part before the kth element in the array is reversed and then the part after that is also reversed. This would give me the rotated array.
 //This solution was executed successfully and got accepted in leetcode.
 class Solution {
