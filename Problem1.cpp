@@ -30,9 +30,12 @@ Note:
 
 
  * Solution 1: using array elements shifting  
-   Time Complexity : O(n^2)
+   Time Complexity : O(n*k)
  * Space complexity :O(1)
 
+ * Solution 2: using reverse of arrays logic 
+   Time Complexity : O(n)
+ * Space complexity :O(1)
  */
 
 class Solution {
@@ -58,6 +61,43 @@ public:
             nums[j] = save_temp;
         }
     }
+
+    /* Reverse array from start to end indexes mentioned */
+    void rotate_helper(int start, int end, vector<int>& nums) {
+        int temp = 0;
+        while (start < end) {
+            temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+    
+    void rotate_ver2(vector<int>& nums, int k) {
+        int len = nums.size();
+        /* identify actual rotations needed for the array */
+        int final_rotation = k % nums.size();
+        
+        /* validation of array rotation length */
+        if (final_rotation == 0) {
+            return;
+        }
+        
+        /*  1 2 3 4 5 6 7 */
+        /* step 1 : 7 6 5 4 3 2 1 */
+        rotate_helper(0, len - 1, nums);
+        /* step 2: 5 6 7 4 3 2 1 */
+        rotate_helper(0, final_rotation - 1, nums);
+        /* 3, 99, -100 , -1 */
+        /* step 3 : 5 6 7 1 2 3 4 */
+        rotate_helper(final_rotation, len - 1, nums);
+        /* 3 99 -1 100 */
+        /* [-1,-100,3,99] k = 2 */
+        /* */
+    }
+};
+
 };
 /* Execute on leetcode platform */
 
