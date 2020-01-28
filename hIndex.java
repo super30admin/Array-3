@@ -2,7 +2,7 @@
 
 LeetCode Submitted : YES
 Space Complexity : O(1)
-Time Complexity : O(logN)
+Time Complexity : O(NlogN)
 
 The idea is to use Binary Search to find n-mid citations at each level of binary search to return the hIndex.
 
