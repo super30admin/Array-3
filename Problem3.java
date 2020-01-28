@@ -1,5 +1,5 @@
-// Time Complexity - O(n)
-// Space Complexity - O(1)
+// Time Complexity - O(n) where n is the length of the nums array
+// Space Complexity - O(1)  since no extra space is used the rotation is done in place
 // This Solution worked on LeetCode 
 
 class Solution {
