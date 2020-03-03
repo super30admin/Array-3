@@ -1,4 +1,4 @@
-//Time Complexity : O(N) for Linear SEarch Approach 
+//Time Complexity : O(N Log N) for Linear Search Approach 
 //Space Complexity : O(1)
 //Did this code successfully run on Leetcode : Yes
 //Any problem you faced while coding this : No
