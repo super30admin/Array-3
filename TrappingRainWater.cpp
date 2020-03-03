@@ -1,5 +1,13 @@
 
+//Time Complexity : O(N) for Two Pointer Approach 
+//Space Complexity : O(1)
+//Did this code successfully run on Leetcode : Yes
+//Any problem you faced while coding this : No
 
+//Your code here along with comments explaining your approach
+
+/*
+*/
 class Solution {
     public int trap(int[] height) {
         int left = 0, right = height.length - 1;
