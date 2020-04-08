@@ -1,3 +1,5 @@
+//before class solution
+/*
 public class Solution {
     public int hIndex(int[] citations) {
         int length = citations.length;
@@ -16,4 +18,37 @@ public class Solution {
         }
         return 0;
     }
+}
+*/
+
+// class solution
+// Uses Bucket Sort
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
+class Solution {
+	public int hIndex(int[] citations) {
+
+		int n = citations.length;
+		int[] bucket = new int[n + 1];
+
+		for (int citation: citations) {
+			if(citation > n) {
+				citation = n;
+			}
+			bucket[citation]++;
+		}
+
+		int index = n;
+		int runningSum = 0;
+
+		while(true) {
+			runningSum += bucket[index];
+			if(index <= runningSum) break;
+
+			index--;
+		}
+
+		return index;
+	}
 }
