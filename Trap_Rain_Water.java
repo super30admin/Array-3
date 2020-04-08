@@ -1,10 +1,13 @@
-/** Optimized solution using two arrays to calculate leftMax and rightMax seperately 
+/** Optimised solution using two arrays to calculate leftMax and rightMax seperately 
     Time: O(n)
     Space: O(n)
 */
 class Solution {
     
     public int trap(int[] height) {
+        
+        if(height.length == 0 || height.length == 1)
+            return 0;
         
         int result = 0;
         int n = height.length;
@@ -19,7 +22,7 @@ class Solution {
         }
         
         int rightMax = Integer.MIN_VALUE;
-        for(int j=n-1; j>0; j--)
+        for(int j=n-1; j>=0; j--)
         {
             rightMax = Math.max(rightMax, height[j]);
             rightArray[j] = rightMax;
