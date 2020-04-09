@@ -2,7 +2,7 @@
 """
 Created on Tue Apr  7 00:48:34 2020
 
-@author: aggar
+
 """
 
 #Problem 1 Trap Rain Water

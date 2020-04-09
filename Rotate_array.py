@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Apr  7 00:58:00 2020
-
-@author: aggar
 """
 
 #Problem 3 Rotate array
