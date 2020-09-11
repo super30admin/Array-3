@@ -31,5 +31,37 @@ class Solution {
 }
 
 Approach 2 : Inplace with two pointer Approach
-Time :
-Space :
+Time :O(n)
+Space :O(1)
+class Solution {
+    public int trap(int[] height) {
+        // Edge Case
+        if(height==null || height.length==0) return 0;
+        // Logic 
+        int lw=0; int rw=0; int n=height.length;
+        int l=0; int r=n-1;int result=0;
+        while(l<=r){
+            // which side to process
+            if(lw<=rw){
+                // left side to process
+                if(height[l]<=lw){
+                    // Trapping on the left side
+                    result+=lw-height[l];
+                }else{
+                    lw=height[l];
+                }l++;
+            }else{
+                // Right hand side to process
+                if(height[r]<=rw){
+                    // Trapping on the right side
+                    result+=rw-height[r];
+                }else{
+                    rw=height[r];
+                }r--;
+            }
+            
+        }
+        return result;
+        
+    }
+}
