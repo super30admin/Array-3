@@ -1,0 +1,36 @@
+Approach 1 : Brute Force Approach. Using an extra space iterate through n-k to n and append 0 to n-k-1
+Time Complexity : O(n^2)
+Space Complexity :O(n)
+
+Approach 2 : 1. Reverse the entire Array 
+             2. Reverse the first K elements
+             3. Reverse the last k elements (n-k)
+Time Complexity :O(n)
+Space Complexity :O(1)
+class Solution {
+    public void rotate(int[] nums, int k) {// 1 step Rotate right means pop the last element and put in the first
+        //edge case
+        if(nums.length==0 || nums==null) return ;
+        // Logic 
+        // 1. Reverse the entire Array 
+        // 2. Reverse the first K elements
+        // 3. Reverse the last k elements (n-k)
+        int n=nums.length;
+        k%=nums.length;
+        reverse(nums,0,n-1);
+        reverse(nums,0,k-1);
+        reverse(nums,k,n-1);       
+    }
+    public void reverse(int[] nums ,int start,int end){
+        while(start<end){// First Reverse
+            int temp=nums[start];
+            nums[start]=nums[end];
+            nums[end]=temp;
+            start++;end--;       
+        }
+        
+    }
+}
+Approach 3 : K steps Rotate right means pop the last element and put in the first. Continue like this k times
+Time Complexity : O(nk)
+Space Complexity : O(1)
