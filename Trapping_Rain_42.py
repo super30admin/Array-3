@@ -1,6 +1,6 @@
 
 # Time- O(n)
-# Space -O(n)
+# Space -O(1)
 class Solution:
     def trap(self, height: List[int]) -> int:
         if len(height) < 3:
