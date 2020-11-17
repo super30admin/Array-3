@@ -1,27 +1,29 @@
 // Time Complexity : O(n)
-// Space Complexity :O(n)
+// Space Complexity :O(1)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
 
 // Your code here along with comments explaining your approach
-// create a new array, newArray[i+k] = nums[i], if i+k>nums.length-1, then do %nums.length
+// idea is k elements from end reach the start of the array, other elements are moved to end
+// first reverse array, then reverse first k elements, then all other
 
 class Solution {
     public void rotate(int[] nums, int k) {
-        int[] result = new int[nums.length];
+        k = k%nums.length;
         
-        for(int i=0; i<nums.length; i++){
-            if(i+k <= nums.length-1){
-               result[i+k] = nums[i]; 
-            }
-            else{ 
-                result[(i+k)%nums.length] = nums[i];
-            }
+        reverse(nums, 0, nums.length-1);
+        reverse(nums, 0, k-1);
+        reverse(nums, k, nums.length-1);
+    }
+    
+    private void reverse(int[] nums, int start, int end){
+        int temp = 0;
+        while(start<end){
+            temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
         }
-        
-        for(int i=0; i<result.length; i++){
-            nums[i] = result[i];
-        }
-
     }
 }
