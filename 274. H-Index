@@ -1,0 +1,30 @@
+class Solution:
+    def hIndex(self, citations: List[int]) -> int:
+        n = len(citations)
+        
+        #initialize the array with 0's of size n
+        arr = [0 for i in range(n + 1)];
+        
+        # increment the citation count 
+        for num in citations:
+            if(num > n):
+                arr[n] += 1;
+            else:
+                arr[num] += 1;
+        #print(arr)
+        # traverse from the end of the array
+        sum = 0;
+        for i in range(n, -1, -1):
+            sum += arr[i]
+            #print(i, sum)
+            # when number of papers have atlease i citations 
+            if(sum >=i):
+                return i;
+        return 0;
+        
+        '''
+        time complexity = O(n)
+        space complexity = O(n)
+        '''
+            
+        

@@ -1,0 +1,33 @@
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        if(not height):
+            return 0;
+        n = len(height);
+        #initialize two arrays to find the previous greater element and next greater element
+        leftmax = height[0];
+        rightmax=height[n-1]
+        leftmaxlist,rightmaxlist = [height[0]],[height[n-1]];
+        
+        for i in range(1,n):
+            if(height[i]>leftmax):
+                leftmax = height[i];
+            if(height[n-i-1]>rightmax):
+                rightmax = height[n-i-1];
+            leftmaxlist.append(leftmax);
+            rightmaxlist.append(rightmax);
+        rightmaxlist = rightmaxlist[::-1];
+        res =0;
+        
+        # iterate for n indexes
+        for i in range(n):
+            # pick the minimum between Previous greater element and next greater element
+            # and subract it from height at that index i and add it to the result
+            res+= min(leftmaxlist[i],rightmaxlist[i])- height[i];
+        return res;
+    '''
+    time complexity = O(n)
+    space complexity = O9n
+    '''
+            
+        
+        

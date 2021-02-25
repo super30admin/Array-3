@@ -1,0 +1,31 @@
+class Solution:
+    # function for reversing the elements in the array from index i to j
+    def rev(self, nums, i,j):
+        # iterate until i and j are equal
+        while(i<j):
+            nums[i], nums[j] = nums[j], nums[i];
+            i += 1;
+            j -= 1;
+            
+    
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        
+        n = len(nums);
+        k = k%n;
+        if(k > 0):
+            # first reverse last k elements
+            self.rev(nums, n-k, n-1);
+            # reverse first n-k elets
+            self.rev(nums, 0, n-k-1);
+            # reverse all the elements
+            self.rev(nums, 0, n-1);
+        
+        '''
+        time complexity = O(n)
+        space complexity = O(n)
+        '''
+        
+        
