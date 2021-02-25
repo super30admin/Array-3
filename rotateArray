@@ -1,0 +1,36 @@
+class Solution {
+    public void rotate(int[] nums, int k) {
+        
+        
+        //189. Rotate Array
+        //Time complexity : O(n)
+        //Space complaxity :O(1)
+        
+        if(nums == null || nums.length ==0)
+            return;
+        
+        int len = nums.length;
+        if(k >= len)
+            k = k % len;
+        
+        //reverse the whole array
+        reverse(nums,0,len-1);
+        reverse(nums,0,k-1);
+        reverse(nums,k,len-1);
+        
+    }
+    
+    private void reverse(int[] nums,int l,int h){
+        while(l <= h){
+            swap(nums,l,h);
+            l++;
+            h--;
+        }
+    }
+    
+    private void swap(int[] nums,int a,int b){
+        int temp = nums[a];
+        nums[a] =nums[b];
+        nums[b] = temp;
+    }
+}
