@@ -1,0 +1,50 @@
+class Solution {
+    public int trap(int[] height) {
+        
+       // 42. Trapping Rain Water
+        //Time compleixty : O(n)
+        //Space complexity : O(1)
+        //4 pointers
+        int n = height.length;
+        
+        //edge case
+        if(height == null || n <2)
+            return 0;
+        
+        int lWall =0;
+        int rWall =0;
+        int left =0;
+        int right = n-1;
+        int result =0;
+        while(left <= right){
+            
+            //make sure left wall is lesser or equal than right wall otherwise water can flow towards right
+            
+            if(lWall <= rWall){
+                
+                //process the left side
+                if(lWall > height[left]){
+                    result += 1 * lWall-height[left];
+                }
+                else
+                    lWall = height[left];
+                left++;
+            }
+            
+            //process the right side
+            else{
+                 
+                if(rWall > height[right])
+                     result += 1 * rWall -height[right];
+            else
+                rWall = height[right];
+            right--;
+            
+        }
+            }
+            
+                
+        return result;
+        
+    }
+}
