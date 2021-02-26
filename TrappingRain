@@ -1,0 +1,40 @@
+/*
+TC: O(n)
+SC: O(1)
+ */
+class TrappingRain {
+    fun trap(height: IntArray): Int {
+
+        if (height.size == 0 || height.size < 2){
+            return 0
+        }
+
+        var lw = 0
+        var rw = 0
+        var lp = 0
+        var rp = height.size-1
+        var res = 0
+
+        while(lp <= rp){
+            if (lw <= rw){
+                if (lw < height[lp]){
+                    lw = height[lp]
+                }
+                else{
+                    res += 1 * (lw - height[lp])
+                }
+                lp++
+            }
+            else{
+                if (rw < height[rp]){
+                    rw = height[rp]
+                }
+                else{
+                    res+= 1 * (rw - height[rp])
+                }
+                rp--
+            }
+        }
+        return res;
+    }
+}
