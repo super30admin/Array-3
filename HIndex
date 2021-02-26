@@ -1,0 +1,54 @@
+class Solution {
+    //TC - o(nlogn)
+    //SC- o(1)
+    public int hIndex(int[] citations) {
+        
+        if(citations == null || citations.length == 0)
+            return 0;
+        
+        int n = citations.length;
+        //sort array - o(nlogn)
+        Arrays.sort(citations);
+        
+        //o(n)
+        for(int i =0; i<n;i++) {
+            //if n=5 thn 5,4,3,2,1!
+            int diff = n-i;
+            //whenever we find bridge return
+            if(diff <= citations[i])
+                return diff;
+        }
+        return 0;
+    }
+}
+
+//TC - o(n)
+    //SC- o(n)
+    public int hIndex(int[] citations) {
+        
+        if(citations == null || citations.length == 0)
+            return 0;
+        int n = citations.length;
+        int [] buckets = new int [n+1];
+    
+        for(int i=0;i<n;i++) {
+            //if grater thn the bucket size 
+            //add to last index
+            if(citations[i]<=n) {
+                buckets[citations[i]]++;
+            } else{
+                buckets[n]++;
+            }
+        }
+        
+        //howmany citations > this index
+        //when they are equal or grater return
+        int sum =0;
+        for(int i =n;i>=0;i--){
+            sum = sum+buckets[i];
+            if(sum >= i)
+                return i;
+        }
+        return 0;
+    }
+}
