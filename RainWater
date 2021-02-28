@@ -1,0 +1,39 @@
+/**
+* Time complexity= O(n)
+* Space complexity =O(1)
+*/
+class Solution {
+    public int trap(int[] height) {
+        if(height==null || height.length < 2) return 0;
+        
+        int l=0;
+        int r=height.length-1;
+        int lw=0;
+        int rw=0;
+        int result=0;
+        
+        while(l<=r){
+            if(lw<=rw){
+                if(lw<height[l]){
+                    lw=height[l];
+                }else{
+                    result+=lw-height[l];
+                }
+                l++;
+                
+            }else{
+                 if(rw<=lw){
+                if(rw<height[r]){
+                    rw=height[r];
+                }else{
+                    result+=rw-height[r];
+                }
+                r--;
+                
+            }
+                  
+        }
+    }
+   return result;     
+}
+}
