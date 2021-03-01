@@ -9,12 +9,6 @@ we rotate the whole array, rotate first k elements, then rotate last n-k
 
 
 class Solution:
-    def reverse(self, left, right, nums):
-        while left < right:
-            nums[left], nums[right] = nums[right], nums[left]
-            left += 1
-            right -= 1
-
     def rotate(self, nums: List[int], k: int) -> None:
         """
         Do not return anything, modify nums in-place instead.
@@ -30,3 +24,9 @@ class Solution:
         left = k
         right = l-1
         self.reverse(left, right, nums)
+        
+    def reverse(self, left, right, nums):
+        while left < right:
+            nums[left], nums[right] = nums[right], nums[left]
+            left += 1
+            right -= 1
