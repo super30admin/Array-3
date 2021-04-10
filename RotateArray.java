@@ -1,5 +1,6 @@
 package Array-3;
-// 
+// Time Complexity : O(n)
+// Space Complexity : O(1)
 public class RotateArray {
     class Solution {
 
