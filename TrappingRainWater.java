@@ -28,3 +28,35 @@ class Solution {
         return res;
     }
 }
+
+// Approach2: Using no extra space and just two pointers approach
+
+// Time Complexity : O(n) n- length of heights array
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+// Your code here along with comments explaining your approach
+
+// Using Dynamic programming approach
+
+class Solution {
+    public int trap(int[] height) {
+        int left=0,right = height.length-1;
+        int leftMax=0,rightMax=0;
+        int area =0;
+        while(left<right){
+            leftMax = Math.max(leftMax,height[left]);
+            rightMax = Math.max(rightMax,height[right]);
+            if(leftMax<rightMax){
+                area = area+(leftMax - height[left]);
+                left++;
+            }
+            else{
+                area = area+(rightMax - height[right]);
+                right--;
+            }
+        }
+        return area;
+    }
+}
