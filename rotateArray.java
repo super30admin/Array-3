@@ -26,3 +26,6 @@ class Solution {
         nums[j] = temp;
     }
 }
+
+Time Complexity = O(n)
+Space Complexity = O(1)    
