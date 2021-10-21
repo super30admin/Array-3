@@ -1,6 +1,6 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        if len(height) == 0:
+        if len(height) == 0 or height is None:
             return
         lw, rw = 0, 0
         l, r = 0, len(height) - 1
