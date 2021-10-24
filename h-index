@@ -1,0 +1,24 @@
+#Time Complexity: O(n)
+#Space Complexity: O(n)
+#Run on leetcode: yes
+#Problem: problem running on len(citations)==1 but resolved it through trial and error
+class Solution(object):
+    def hIndex(self, citations):
+        """
+        :type citations: List[int]
+        :rtype: int
+        """
+        n=len(citations)
+        arr=[0 for i in range(n+1)]
+        for i in range(n):
+            if citations[i]>=n:
+                arr[n]+=1
+            else:
+                arr[citations[i]]+=1
+        #print(arr)
+        sum=0
+        for i in range(len(arr)-1,-1,-1):
+            sum+=arr[i]
+            if(sum>=i):
+                return i
+        return 0
