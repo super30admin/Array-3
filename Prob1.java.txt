@@ -1,0 +1,29 @@
+class Solution {
+    public int trap(int[] height) {
+        if(height == null ||height.length == 0)
+            return 0;
+        
+        int n = height.length;
+        int lw =height[0],left =0;
+        int rw = height[n-1],right=n-1;
+        int waterTrapped = 0;
+        
+        while(left <= right){
+            if(lw <= rw){
+                if(height[left] < lw){
+                    waterTrapped += (lw-height[left]);
+                }else{
+                    lw = height[left];
+                }
+                left++;
+            }else{
+                if(height[right] < rw)
+                    waterTrapped += (rw-height[right]);
+                else
+                    rw = height[right];
+                right--;
+            }
+        }
+        return waterTrapped;
+    }
+}
