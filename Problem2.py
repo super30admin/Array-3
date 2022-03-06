@@ -6,7 +6,6 @@ class Solution:
     def hIndex(self, citations: List[int]) -> int:
         citations.sort()
         r = len(citations)
-        #find first idx where <= the num
         for i, n in enumerate(citations):
             if r-i <= n:
                 return r-i
