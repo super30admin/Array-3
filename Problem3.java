@@ -10,7 +10,6 @@ public class Problem3 {
         int n = nums.length;
         if (k > n) k = k % n;
         reverse(nums, n - k, n - 1);
-        System.out.println(Arrays.toString(nums));
         reverse(nums, 0, n - k - 1);
         reverse(nums, 0, n - 1);
     }
@@ -18,9 +17,6 @@ public class Problem3 {
     private void reverse(int[] nums, int i, int j) {
         System.out.println("inside reverse loop");
         while (i <= j) {
-            System.out.println("nums[i]" + nums[i]);
-            System.out.println("nums[j]" + nums[j]);
-            System.out.println("*****");
             swap(nums, i, j);
             i++;
             j--;

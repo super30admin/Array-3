@@ -28,6 +28,6 @@ public class Problem2 {
 
     public static void main(String[] args) {
         Problem2 problem2 = new Problem2();
-        System.out.println("result valur " + problem2.hIndex(new int[]{3, 0, 6, 1, 5}));
+        System.out.println("result value " + problem2.hIndex(new int[]{3, 0, 6, 1, 5}));
     }
 }
