@@ -1,0 +1,49 @@
+class Solution {
+    public int trap(int[] height) {
+        int result = 0;
+        int maxIndex = 0;
+        int max= height[0];
+        for(int i = 0; i<height.length;i++)
+        {
+            if(max<height[i])
+            {
+                maxIndex = i;
+                max = height[i];
+            }
+        }
+        
+        
+        //left pass
+        int slow = 0;
+        int fast = 0;
+         for(int i = 0; i<maxIndex;i++)
+         {
+             if(height[i] < height[slow])
+             {
+                 result +=height[slow]-height[i];
+             }
+             
+             else
+             {
+                 slow = i;
+             }
+         }
+        
+        //right pass
+        slow = height.length -1;
+         for(int i = height.length -1; i>=maxIndex;i--)
+         {
+             if(height[i] < height[slow])
+             {
+                 result +=height[slow]-height[i];
+             }
+             
+             else
+             {
+                 slow = i;
+             }
+         }
+        
+        return result;
+    }
+}
