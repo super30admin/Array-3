@@ -1,0 +1,43 @@
+class Solution {
+    public int trap(int[] height) 
+    {
+        int h = height.length-1;
+        int l = 0;
+        int r = h;
+        int lw = 0;
+        int rw = 0;
+        int result = 0;
+            while(l<=r)
+            {
+                if(lw<=rw)
+                {
+                    if(lw < height[l])
+                    {
+                        lw = height[l];
+                    }
+                    
+                    else
+                    {
+                        result += lw - height[l];
+                    }
+                   
+                    l++;
+                }
+                
+                else
+                {
+                    if(rw < height[r])
+                    {
+                        rw = height[r];
+                    }
+                    else
+                    {
+                        result += rw - height[r];
+                    }
+                    r--;
+                }
+            }
+        
+        return result;
+    }
+}
