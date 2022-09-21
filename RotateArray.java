@@ -8,10 +8,6 @@ import java.util.List;
 
 
 // Your code here along with comments explaining your approach
-// 1. Iterate through array, take the value at particular index and modify the number present at value-1 in the array by multiplying with -1.
-// 2. After going through all items, iterate through array one  more time and check if the number at an index is negative.
-// 3. If the number is positive at an index, that means the missing number is index+1. So, add index+1 to the list.
-
 //189. Rotate Array (Medium) - https://leetcode.com/problems/rotate-array/
 class Solution {
     public void rotate(int[] nums, int k) {
