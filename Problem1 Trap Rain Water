@@ -1,0 +1,34 @@
+//TC: o(n)
+class Solution {
+    public int trap(int[] height) {
+        int result = 0;
+        int l = 0; int r = height.length-1;
+        int lw = 0; int rw = 0;
+        while(l<=r){
+            if(lw<=rw){
+            if(height[l]<lw){
+                //trap the water
+                result = result + (lw-height[l]);
+            }
+            else
+            {
+                lw = height[l];
+            }
+                l++;
+            }
+            else{
+            if(height[r]<rw){
+                //trap the water
+                result = result + (rw-height[r]);
+            }
+            else
+            {
+                rw = height[r];
+            }
+                r--;
+
+        }
+        }
+            return result;
+    }
+}
