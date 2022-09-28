@@ -1,7 +1,26 @@
 //Problem 274
 //TC : O(n)
 //SC : O(n)
-
+class Solution {
+    public int hIndex(int[] citations) {
+        int n = citations.length;
+        if(citations == null || n ==0) return 0;
+        int[] hIndexs = new int[n+1];
+        
+        for(int i:citations){
+            if(i >= n) hIndexs[n]++;
+            else hIndexs[i]++;
+        }
+        int sum=0;
+        for(int i=n;i>=0;i--){
+            sum+=hIndexs[i];
+            if(sum>=i){
+                return i;
+            }
+        }
+        return 0;
+    }
+}
 //Problem 275
 //TC : O(logn)
 //SC : O(1)
