@@ -1,0 +1,32 @@
+Time Complexity: O(N)
+Space Complexity: O(1) No extra space except for constant space required for left, right, left_max and right_max pointers.
+
+class Solution {
+    public int trap(int[] height) {
+        int n = height.length;
+        if (n<=2) return 0;
+        int trappedWater = 0; int left = 1; int right = n-2;
+        int maxLeft = height[0]; int maxRight = height[n-1];
+        while(left<=right){
+            if (maxLeft<=maxRight)
+            {
+                if (maxLeft>=height[left])
+                {
+                trappedWater += maxLeft-height[left];
+                }
+                else maxLeft = height[left];
+                left++;
+            }
+            else 
+            {
+                if (maxRight>height[right])
+                {
+                trappedWater += maxRight-height[right];
+                }
+                else maxRight = height[right];
+                right--;
+            }
+        }
+        return trappedWater;
+    }
+}

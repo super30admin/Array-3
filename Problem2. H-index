@@ -1,0 +1,22 @@
+time Complexity: O(N) or O(2N) iterations in total 
+Space Complexity: O(N) or O(N+1) in order to sptore temp array
+
+//with count sorting
+class Solution {
+    public int hIndex(int[] citations) {
+        int n = citations.length;
+        int[] temp = new int[n+1]; //array of papers
+        for(int i=0;i<n;i++){ // index of temp array represents # of citations
+            if (citations[i]>=n)
+                temp[n]++;
+            else 
+                temp[citations[i]]++;
+        }
+        int sum =0;
+        for(int i=n;i>=0;i--){
+            sum += temp[i];
+            if (sum>=i) return i;
+        }
+        return 0;
+    }
+}

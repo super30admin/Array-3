@@ -1,0 +1,40 @@
+Time Complexity: O(N)
+We are first reversing the given array in O(N) operation and then reversing the first K elements in O(K) and remaining N-k elements O(N-k) time.
+total O(2N) ~ O(N)
+Space Complexity: O(1)
+Not using any extra space
+
+
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        if(k == n) return;
+        if (k>n) k=k%n;
+        int left=0; int right = n-1;
+        while(left<right){
+            int temp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp;
+            left++;
+            right--;
+        }
+        left = 0;
+        right = k-1;
+    while(left<right){
+        int temp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp;
+            left++;
+            right--;
+         }
+        left = k;
+        right = n-1;
+    while(left<right){
+        int temp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp;
+            left++;
+            right--;
+         }
+    }
+}
