@@ -1,0 +1,54 @@
+#Trapping Rain Water
+#tc:O(n)
+#sc:O(1)
+class Solution(object):
+    def trap(self, height):
+        ptrL = 0
+        ptrR = len(height) - 1
+        totalWater = 0
+        maxL = 0
+        maxR = 0
+
+        while ptrL < ptrR:
+            if height[ptrL] <= height[ptrR]:
+                if height[ptrL] >= maxL:
+                    maxL = height[ptrL]
+                else:
+                    totalWater += maxL - height[ptrL]
+                ptrL += 1
+            else: #height[ptrL] > height[ptrR]
+                if height[ptrR] >= maxR:
+                    maxR = height[ptrR]
+                else:
+                    totalWater += maxR - height[ptrR]
+                ptrR -= 1
+                
+        return totalWater
+        
+#H-Index
+#tc:O(n)
+#sc:O(n)
+class Solution:
+    def hIndex(self, citations: List[int]) -> int:
+        citations_length = len(citations)
+        papers = [0]*(citations_length+1)
+
+        for citation in citations:
+            index = min(citations_length, citation)
+            papers[index] += 1
+
+        k, s = citations_length, papers[citations_length]
+        while k > s:
+            k -= 1
+            s += papers[k]
+
+        return k
+#Rotate Array 
+#tc:O(len(nums))
+#sc:O(1)
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        k = k%len(nums)
+        n= len(nums)-k
+        nums[:] = nums[n:]+nums[:n]
+        
