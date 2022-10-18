@@ -1,0 +1,20 @@
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        maxL = 0 
+        maxR = 0
+        res = 0
+        l, r = 0, len(height) - 1
+        while l < r:
+            if height[l] > height[r]:
+                maxR = max(maxR, height[r])
+                res = res + (maxR - height[r])
+                r -= 1
+            elif height[l] <= height[r]:
+                maxL = max(maxL, height[l]) 
+                res = res + (maxL - height[l])
+                l += 1 
+        return res
+    
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+# Successfully implemented on Leetcode

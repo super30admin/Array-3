@@ -1,0 +1,25 @@
+class Solution:
+    def hIndex(self, citations: List[int]) -> int:
+        l, r = 0, len(citations)-1
+        res = 0
+        while l <= r:
+            pival = citations[l]
+            i = l + 1
+            for j in range(l+1, r+1):
+                if citations[j] > pival:
+                    citations[i], citations[j] = citations[j], citations[i]
+                    i += 1
+            i -= 1
+            citations[l], citations[i] = citations[i], citations[l]
+            if citations[i] == i+1:
+                return i+1
+            elif citations[i] > i+1:
+                l = i + 1
+                res = i+1
+            else:
+                r = i - 1
+        return res
+    
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+# Successfully implemented on Leetcode
