@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int n = height.size();
+        int l =0;               // left pointer
+        int r = n-1;            // right pointer
+        int lw = 0;             // left wall
+        int rw = 0;             // right wall
+        
+        int answer = 0;
+        while(l <= r){
+            // whichever wall is small, its pointer will move for sure !!! l++ or r++
+            if(lw <= rw){
+                if(lw > height[l]){
+                    answer += lw - height[l];                //if wall is bigger than pointer which is ahead, so water trap possible
+                }
+                else{
+                    lw = height[l];                          // else move the wall ahead wherever the current pointer is, as now it doesnt matter bcoz its heigh is more than wall and all the heights which were smaller than this wall are already calculated
+                }
+              l++;  
+            }
+            else{
+                if(rw > height[r]){
+                    answer += rw - height[r];  
+                }
+                else{
+                    rw = height[r];
+                }
+              r--;   
+            } 
+        }
+    return answer;
+        
+    }
+};
