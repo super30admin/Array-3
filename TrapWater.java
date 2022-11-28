@@ -65,3 +65,56 @@ public class TrapWater {
         return result;
     }
 }
+
+
+/*
+ * Approach 2 - Single Pass Algorithm
+ * 1 - We maintain a left wall, left pointer and a right wall and a right pointer. 
+ * 2 - Check which side is to be processed first by checking the height of the left and right wall. If the left wall is smaller
+ * in height, right wall acts as a dam so process left side first and vice versa.
+ * 3 - Check if the left pointer height is smaller than the left wall to trap water. IF yes, add to the result. If not,
+ * shift the left wall to the left pointer and increment left pointer in both the cases. Perform same checks when processing the right side
+ * 4 - In the end, return the result.
+ * TC - O(n)
+ * SC - O(1)
+ */
+
+public int trap(int[] height) {
+    int l = 0;
+    int r = height.length - 1;
+    
+    int lw = 0;
+    int rw = 0;
+    int result = 0;
+    
+    while(l <= r)
+    {
+        if(lw <= rw)
+        {
+            //left side
+            if(height[l] < lw)
+            {
+                result += lw - height[l];
+            }
+            else
+            {
+                lw = height[l];
+            }
+            l++;
+        }
+        else
+        {
+            //right
+            if(height[r] < rw)
+            {
+                result += rw - height[r];
+            }
+            else
+            {
+                rw = height[r];
+            }
+            r--;
+        }
+    }
+    return result;
+}
