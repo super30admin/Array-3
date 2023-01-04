@@ -1,0 +1,19 @@
+//timeComplexity.   nlog(n)
+//spacecomplexity.  O(1)
+
+class Solution {
+    public int hIndex(int[] citations) {
+        Arrays.sort(citations);
+        int n = citations.length;
+
+        for(int i = 0 ; i < n; i++){
+
+            int diff = n - i;
+
+            if(diff <= citations[i]){
+                return diff;
+            }
+        }
+        return 0;
+    }
+}
