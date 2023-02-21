@@ -1,0 +1,37 @@
+// Time Complexity : O(N)
+// Space Complexity : O(1)
+// Did this code successfully run in leetcode : Yes
+// Any problems faced : No
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int n = height.size();
+        int result = 0;
+
+        // calc max height and index of max height
+        int maxHeight = 0, maxIdx = -1;
+        for(int i = 0; i < n; i++) {
+            if(height[i] > maxHeight) {
+                maxHeight = height[i];
+                maxIdx = i;
+            }
+        }
+
+        // process the left of maxHeight and keep updating leftmax
+        // calc max water that can be stored above the height of the building
+        int leftMax = 0;
+        for(int i = 0; i < maxIdx; i++) {
+            leftMax = max(leftMax, height[i]);
+            result += (leftMax - height[i]);  // max water that can be stored above it
+        }
+
+        // process the right of maxHeight and keep updating rightMax
+        int rightMax = 0;
+        for(int i = n - 1; i > maxIdx; i--) {
+            rightMax = max(rightMax, height[i]);
+            result += (rightMax - height[i]);
+        }
+        return result;
+    }
+};
