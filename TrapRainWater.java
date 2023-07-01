@@ -1,19 +1,24 @@
 // Time Complextiy : O(n)
 // Space complexity : O(1)
 class Solution {
-    public void rotate(int[] nums, int k) {
-        k=k%nums.length;
-        reverse(0,nums.length-1-k, nums);
-        reverse(nums.length-k,nums.length-1,  nums);
-        reverse(0,nums.length-1,  nums);
-    }
-    public void reverse(int s, int e, int[] nums){
-        while(s<e){
-            int temp = nums[s];
-            nums[s] = nums[e];
-            nums[e]= temp;
-            s++;
-            e--;
+    public int trap(int[] h) {
+        int n = h.length; 
+        int lw = 0 , rw = 0; 
+        int l = 0 , r = n-1;
+        int water =0;
+
+        while(l<=r){
+            if(lw<rw){
+                if(h[l]<lw) water+=(lw-h[l]);
+                else lw= h[l];
+                l++;
+            }
+            else{
+                if(h[r]<rw) water+=(rw-h[r]);
+                else rw = h[r];
+                r--;
+            }
         }
+        return water;
     }
 }
