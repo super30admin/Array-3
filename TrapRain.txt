@@ -1,0 +1,33 @@
+// Time complexity o(n) space complexity o(1)
+class Solution {
+    public int trap(int[] height) {
+        int max= Integer.MIN_VALUE;
+        int maxidx=0;
+        for(int i=0;i<height.length;i++){
+            if(height[i]>max){
+                max=height[i];
+                maxidx=i;
+            }
+        }
+        int lw=0,rw=height.length-1;
+        int l=lw+1,r=rw-1;
+        int res=0;
+        while(l<maxidx){
+            if(height[lw]<height[l]) lw=l;
+            else{
+               res+=height[lw]-height[l];
+            }
+            l++;
+        }
+        while(r>maxidx){
+            if(height[rw]<height[r]) rw=r;
+            else{
+               res+=height[rw]-height[r];
+            }
+            r--;
+        }
+        return res;
+
+
+    }
+}
