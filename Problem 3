@@ -1,0 +1,52 @@
+#Rotate Array
+
+
+Approach 1: Using Extra Array
+We can use an extra array to store the elements after rotation and then copy them back to the original array.
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        n = len(nums)
+        k %= n
+        rotated = nums[-k:] + nums[:-k]
+        nums[:] = rotated
+
+
+Approach 2: Reversing the Array
+We can reverse the entire array, then reverse the first k elements, and finally reverse the remaining n - k elements.
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        n = len(nums)
+        k %= n
+        nums.reverse()
+        nums[:k] = reversed(nums[:k])
+        nums[k:] = reversed(nums[k:])
+Both of these approaches have a time complexity of O(n), where n is the number of elements in the array nums. They use extra space for storing intermediate results, so their space complexity is O(n).
+
+
+Approach 3: Using Cyclic Replacements (In-place)
+We can perform cyclic replacements directly in the given array to rotate it in place. This approach requires O(1) extra space.
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        n = len(nums)
+        k %= n
+        count = 0
+        start = 0
+        
+        while count < n:
+            current = start
+            prev = nums[start]
+            
+            while True:
+                next_idx = (current + k) % n
+                nums[next_idx], prev = prev, nums[next_idx]
+                current = next_idx
+                count += 1
+                
+                if start == current:
+                    break
+            
+            start += 1
+This approach still has a time complexity of O(n), but it uses only constant extra space, achieving the in-place requirement.
