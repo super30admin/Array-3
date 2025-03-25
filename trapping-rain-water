@@ -1,0 +1,93 @@
+// Time Complexity :O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+// Your code here along with comments explaining your approach:
+
+class Solution {
+    public int trap(int[] height) {
+        int n = height.length;
+        int maxIdx = 0;
+        int maxWall = 0;
+        int result = 0;
+        // finding max wall among all the heights
+        for (int i = 0; i < n; i++) {
+            if (height[i] > maxWall) {
+                maxWall = height[i];
+                maxIdx = i;// max wall index
+            }
+        }
+        int l = 0; // left pointer
+        int lw = 0; // left wall
+        while (l < maxIdx) {// moving towards the max wall
+            if (lw > height[l]) {
+                result += lw - height[l];// adding that much units of water if left pointer height is less the left wall
+                                         // because we are moving towars max wall
+            } else {
+                lw = height[l]; // if not just updating lw
+            }
+            l++;// incrementing left pointer
+        }
+        int r = n - 1;// processing other part of max wall
+        int rw = 0;
+        while (r > maxIdx) { // we are moving towards max from right pointer
+            if (rw > height[r]) {// if height of right pointer is less that right wall
+                result += rw - height[r];// adding units of water to result becuase we are moving towards max wall
+            } else {
+                rw = height[r];// otherwise just updating right wall
+            }
+            r--;// decrementing wall
+        }
+        return result;
+    }
+}
+
+
+//same approach as above but here i have done with left and right wall heights where as above i take left and rightwall indexes
+
+
+// Time Complexity :O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+// Your code here along with comments explaining your approach:
+
+class Solution {
+    public int trap(int[] height) {
+        int n = height.length;
+        int maxIdx = 0;
+        int maxWall = 0;
+        int result = 0;
+        // finding max wall among all the heights
+        for (int i = 0; i < n; i++) {
+            if (height[i] > maxWall) {
+                maxWall = height[i];
+                maxIdx = i;// max wall index
+            }
+        }
+        int l = 0; // left pointer
+        int lw = 0; // left wall
+        while (l < maxIdx) {// moving towards the max wall
+            if (height[lw] > height[l]) {
+                result += height[lw] - height[l];// adding that much units of water if left pointer height is less the left wall
+                                         // because we are moving towars max wall
+            } else {
+                lw = l; // if not just updating lw
+            }
+            l++;// incrementing left pointer
+        }
+        int r = n - 1;// processing other part of max wall
+        int rw = n-1;
+        while (r > maxIdx) { // we are moving towards max from right pointer
+            if (height[rw] > height[r]) {// if height of right pointer is less that right wall
+                result += height[rw] - height[r];// adding units of water to result becuase we are moving towards max wall
+            } else {
+                rw = r;// otherwise just updating right wall
+            }
+            r--;// decrementing wall
+        }
+        return result;
+    }
+}

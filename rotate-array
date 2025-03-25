@@ -1,0 +1,93 @@
+// Time Complexity :O(n)+0(n)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+// Your code here along with comments explaining your approach:
+class Solution {
+
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        List<Integer> arr = new ArrayList<>();
+        k = k % n;
+        if (n < 1) {
+            return;
+        }
+        for (int i = n - k; i < n ; i++) {//first processing n-k to n elements into new array
+            arr.add(nums[i]);
+        }
+        for (int i = 0; i <n - k ; i++) {{//second processing 0 to n-k  elements into new array
+            arr.add(nums[i]);
+        }
+        for (int i = 0; i < n; i++) {
+            nums[i] = arr.get(i); //change input array as the arr which we processed
+        }
+    }
+
+}
+
+// Time Complexity :O(n)+0(n)
+// Space Complexity :
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach:
+class Solution {
+    
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+       k = k % n;
+        if (n < 1) {
+            return;
+        }
+        reverse(nums, 0, n - 1);//first reversing complete array 
+        reverse(nums, 0,k-1); //reversing first k elements
+        reverse(nums, k, n - 1);//then reversing remaining ele
+    }
+
+    public void reverse(int[] nums, int l, int r) {
+        while (l < r) {
+            int temp = nums[l];
+            nums[l] = nums[r];
+            nums[r] = temp;
+            l++;
+            r--;
+        }
+    }
+}
+
+
+
+
+
+// Time Complexity :O(n)+0(n)
+// Space Complexity :
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach:
+class Solution {
+    
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+       k = k % n;
+        if (n < 1) {
+            return;
+        }
+        reverse(nums, 0, n - k-1);//first reversing n-k array 
+        reverse(nums, n-k,n-1); //then reversing remain ele to n elements
+        reverse(nums, 0, n - 1);//then reversing complete array
+    }
+
+    public void reverse(int[] nums, int l, int r) {
+        while (l < r) {
+            int temp = nums[l];
+            nums[l] = nums[r];
+            nums[r] = temp;
+            l++;
+            r--;
+        }
+    }
+}
