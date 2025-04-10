@@ -1,0 +1,108 @@
+## Problem1
+class Solution {
+    public int trap(int[] height) {
+        if (height == null || height.length == 0) return 0;
+
+        int left = 0, right = height.length - 1;
+        int leftMax = 0, rightMax = 0, totalWater = 0;
+
+        while (left < right) {
+            if (height[left] < height[right]) {
+                if (height[left] >= leftMax) {
+                    leftMax = height[left]; // Update left max
+                } else {
+                    totalWater += leftMax - height[left]; // Water trapped at left
+                }
+                left++; // Move left pointer
+            } else {
+                if (height[right] >= rightMax) {
+                    rightMax = height[right]; // Update right max
+                } else {
+                    totalWater += rightMax - height[right]; // Water trapped at right
+                }
+                right--; // Move right pointer
+            }
+        }
+
+        return totalWater;
+    }
+}
+
+
+## Problem2
+class Solution {
+
+    public int hIndex(int[] citations) {
+
+
+        int total=0;
+
+        int n=citations.length;
+
+
+        int[] temp=new int[n+1];
+
+
+        for(int c:citations){
+
+
+            if(c>=n){
+
+                temp[n]++;
+            }
+            else{
+
+
+                temp[c]++;
+
+            }
+
+        }
+
+        for(int i=n;i>=0;i--){
+
+            total+=temp[i];
+            if(total>=i){
+
+                return i;
+
+            }
+
+        }
+        return 0;
+
+
+    }
+}
+
+## Problem3
+class Solution {
+    public void rotate(int[] nums, int k) {
+        if(k==0){
+            return;
+        }
+        if(nums.length==1){
+            return;
+        }
+       k%=nums.length;
+        swap(nums,0,nums.length-1);
+        swap(nums,0,k-1);
+        swap(nums,k,nums.length-1);
+
+    }
+
+    public void swap(int[] nums,int low, int high){
+
+        while(low<=high){
+
+            int temp= nums[low];
+            nums[low]=nums[high];
+            nums[high]=temp;
+            low++;
+
+            high--;
+
+
+        }
+    }
+}
