@@ -89,7 +89,7 @@ If sum < j, decrease j by 1 and increase sum to sum = sum + bucket[j]. The first
 
 This is also known as count sort.
 https://youtu.be/M8AX7QvCtsg?t=3727
-https://youtu.be/mgG5KFTvfPw?t=274 (easy explanation)
+https://youtu.be/mgG5KFTvfPw?t=274 (easy to understand)
 Time: O(N), Space: O(N)
 
 '''
