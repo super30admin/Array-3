@@ -1,0 +1,35 @@
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+// Keep track of the max height on the left side(lw) and right side(rw) when iterating with 2 pointers from left(l) and right(r)
+// Update lw and rw as and when l and r becomes greater than lw and rw respectively
+// Whenever l and r are less than lw and rw add the area at that position to the result
+
+class Solution {
+    public int trap(int[] height) {
+        int result = 0;
+        int maxIndex = 0;
+        int n = height.length;
+        int lw = 0, rw = 0;
+        int l = 0;
+        int r = n - 1;
+
+        while(l <= r) {
+            if(height[l] < height[r]) {
+                if(height[l] > lw)
+                    lw = height[l];
+                else 
+                    result += lw - height[l];
+                l++;
+            }
+            else {
+                if(height[r] > rw)
+                    rw = height[r];
+                else 
+                    result += rw - height[r];
+                r--;
+            }
+        }
+        return result;
+    }
+}

@@ -1,0 +1,29 @@
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
+// Use bucket sort to keep track of the number of citations
+// Iterate from the last element of the bucket sort array
+// Return the first index that satifies the h-index condition
+
+class Solution {
+    public int hIndex(int[] citations) {
+        int n = citations.length;
+        int [] bucket = new int[n+1];
+        // Use bucket sort
+        for(int i = 0; i < n; i++) {
+            if(citations[i] >= n)
+                bucket[n]++;
+            else
+                bucket[citations[i]]++;
+        }
+
+        // Search from the last element to find the H-index
+        int sum = 0;
+        for(int i = n; i >= 0; i--) {
+            sum += bucket[i];
+            if(sum >= i)
+                return i;
+        }
+        return 0;
+    }
+}
