@@ -1,7 +1,6 @@
 # https://leetcode.com/problems/trapping-rain-water/
 # Time complexity- O(n) Space Complexity- O(1)
 
-# follow neetcode explanation
 class Solution:
     def trap(self, height: list[int]) -> int:
         # initialise the left and right pointer
