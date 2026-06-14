@@ -2,7 +2,6 @@
 //Space Complexity: O(n)
 public class HIndex {
     public int hIndex(int[] citations) {
-        //Bucket sort
         int n = citations.length;
         int[] buckets = new int[n+1];
 
